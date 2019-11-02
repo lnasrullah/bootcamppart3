@@ -116,7 +116,7 @@
               <input type="date" class="form-control" name="create_time" placeholder="Image"></input>
             </div>
             <div class="form-group">
-              <label>Produk</label>
+              <label>Nama User</label>
               <select name="id" id="id"  class="form-control">
                 <option selected disabled>Pilih</option>
                 <?php
