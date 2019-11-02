@@ -14,13 +14,40 @@ include "conn.php";
         <form role="form" method="post" action="update.php">
           <div class="box-body">
             <div class="form-group">
-              <label>Nama news</label>
+              <label>Tittle</label>
               <input type="hidden" name="id" value="<?= $data['id_produk']; ?>">
               <input type="text" name="tittle" class="form-control" id="" placeholder="Nama Produk" value="<?= $data['tittle']; ?>">
             </div>
             <div class="form-group">
+              <label>Image</label>
+              <input type="text" class="form-control" name="image" placeholder="Image" value="<?= $data['image']; ?>"></input>
+            </div>
+            <div class="form-group">
               <label>Deskripsi</label>
-              <textarea class="form-control" name="deskripsi" placeholder="Deskripsi"><?= $data['deskripsi']; ?></textarea>
+              <textarea class="form-control" name="deskripsi" placeholder="Image"><?= $data['deskripsi']; ?></textarea>
+            </div>
+            <div class="form-group">
+              <label>Tangal Dibuat</label>
+              <input type="date" class="form-control" name="create_time" placeholder="Tanggal Dibuat" value="<?= $data['create_time']; ?>"></input>
+            </div>
+            <div class="form-group">
+              <label>Nama User</label>
+              <select name="id" id="id"  class="form-control">
+                <option selected disabled>Pilih</option>
+                <?php
+                mysql_connect("localhost","root","");
+                mysql_select_db("berita_digital");
+                $query = "select * from user";
+                $hasil = mysql_query($query);
+                while($news=mysql_fetch_array($hasil)){
+                  if ($data['id'] == $news['id']) {
+                    echo "<option value=$news[id] selected>$news[name]</option>";
+                  } else {
+                    echo "<option value=$news[id]>$news[name]</option>";
+                  }
+                }
+                ?>
+              </select>
             </div>
           </div><!-- /.box-body -->
  
