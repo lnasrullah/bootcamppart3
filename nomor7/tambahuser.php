@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Berita Acara</title>
+    <title>Tambah Berita User</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="asset/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -89,56 +89,38 @@
         	<link src="asset/plugins/datatables/dataTables.bootstrap.js" >
           <div class="row">
             <div class="col-xs-12">
- 
- 
-              <div class="box">
-                <div class="box-header">
-                  <h3 class="box-title">Data Berita</h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <a href="tambah.php" class="btn btn-primary">Tambah Berita</a>
-                  <a href="tambahuser.php" class="btn btn-success">Tambah User</a>
-                  <br><br>
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th>Id Produk</th>
-                        <th>Nama Produk</th>
-                        <th>Image</th>
-                        <th>Deskripsi</th>
-                        <th>Tanggal Buat</th>
-                        <th>Nama User</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                include ("conn.php");
-                    $query="select * from news join user where user.id = news.user_id";
-                    $tampil=mysqli_query($koneksi, $query) or die(mysqli_error());
+    <div class="col-xs-6">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">Form Tambah Data User</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
 
-                    $no=1;
-                     while($data=mysqli_fetch_array($tampil))
-                    { 
-                ?>
-                        <tr>
-                        <td><?php echo  $no;?></td>
-                        <td><?php echo  $data['tittle'];?></td>
-                        <td><?php echo  $data['image'];?></td>
-                        <td><?php echo  $data['deskripsi'];?></td>
-                        <td><?php echo  $data['create_time'];?></td>
-                        <td><?php echo  $data['name'];?></td>
-                        <td>
-                        <a href="index.php/edit/<?php echo $data['id'];?>" class="btn btn-primary"> Edit</a> 
-                        <a href="index.php/hapus/<?php echo $data['id'];?>" class="btn btn-danger">Delete</a>
-                        </td>
-                      </tr>
-                      <?php
-                    $no++;
-                    }
-                    ?>
-                    </tbody>
-                  </table>
+
+        <form role="form" method="post" action="simpanuser.php">
+          <div class="box-body">
+            <div class="form-group">
+              <label>Nama</label>
+              <input type="text" name="name" class="form-control" id="" placeholder="nam"/>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" name="email" placeholder="email"></input>
+            </div>
+            <div class="form-group">
+              <label>Role</label>
+              <input class="form-control" name="role" placeholder="role"></input>
+            </div>
+          </div><!-- /.box-body -->
+ 
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="index.php" class='btn btn-danger'>Kembali</a>
+          </div>
+        </form>
+      </div>
+    </div>  
+ </div>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col -->
